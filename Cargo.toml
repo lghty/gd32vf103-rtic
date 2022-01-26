@@ -1,0 +1,14 @@
+[package]
+name = "gd32vf103-rtic"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+riscv = { version = "0.6.0" }
+gd32vf103xx-hal = { version = "0.5.0" }
+rtic-core = { version  = "1.0.0" }
+rtic-monotonic = { version = "1.0.0" }
+bare-metal = "1.0.0"
+heapless = "0.7.7"
