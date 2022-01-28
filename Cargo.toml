@@ -3,12 +3,43 @@ name = "gd32vf103-rtic"
 version = "0.1.0"
 edition = "2021"
 
+[lib]
+name = "rtic"
+
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
 riscv = { version = "0.6.0" }
 gd32vf103xx-hal = { version = "0.5.0" }
+gd32vf103-rtic-macros = { path = "macros", version = "1.0.0" }
 rtic-core = { version  = "1.0.0" }
 rtic-monotonic = { version = "1.0.0" }
 bare-metal = "1.0.0"
 heapless = "0.7.7"
+
+[dev-dependencies]
+gd32vf103-pac = { version = "0.4.0", features = ["rt"] }
+riscv-semihosting = { version = "0.0.1", git = "https://github.com/riscv-rust/riscv-semihosting" }
+systick-monotonic = "1.0.0"
+
+[dev-dependencies.panic-semihosting]
+features = ["exit"]
+version = "0.5.2"
+
+[target.x86_64-unknown-linux-gnu.dev-dependencies]
+trybuild = "1"
+
+# do not optimize proc-macro deps or build scripts
+[profile.dev.build-override]
+codegen-units = 16
+debug = false
+debug-assertions = false
+opt-level = 0
+overflow-checks = false
+
+[profile.release.build-override]
+codegen-units = 16
+debug = false
+debug-assertions = false
+opt-level = 0
+overflow-checks = false

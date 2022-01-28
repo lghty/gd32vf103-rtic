@@ -1,0 +1,26 @@
+[package]
+authors = [
+  "The Real-Time Interrupt-driven Concurrency developers",
+  "Jorge Aparicio <jorge@japaric.io>",
+  "The RTIC developers",
+]
+categories = ["concurrency", "embedded", "no-std"]
+description = "Procedural macros of the gd32vf103-rtic crate"
+documentation = "https://rtic-rs.github.io/gd32vf103-rtic/api/gd32vf103_rtic"
+edition = "2021"
+keywords = ["risc-v", "gd32vf103"]
+license = "MIT OR Apache-2.0"
+name = "gd32vf103-rtic-macros"
+readme = "../README.md"
+repository = "https://github.com/rtic-rs/gd32vf103-rtic"
+version = "1.0.0"
+
+[lib]
+proc-macro = true
+
+[dependencies]
+proc-macro2 = "1"
+proc-macro-error = "1"
+quote = "1"
+syn = "1"
+rtic-syntax = "1.0.0"

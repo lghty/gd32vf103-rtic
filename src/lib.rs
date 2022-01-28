@@ -7,6 +7,7 @@
 //! RTIC implementation for GD32VF103XX devices
 
 pub(crate) use gd32vf103xx_hal as hal;
+pub use gd32vf103_rtic_macros::app;
 pub use rtic_core::{prelude as mutex_prelude, Exclusive, Mutex};
 pub use rtic_monotonic::{self, Monotonic};
 

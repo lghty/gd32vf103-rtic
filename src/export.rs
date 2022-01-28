@@ -4,12 +4,23 @@ pub use heapless::spsc::Queue;
 pub use heapless::BinaryHeap;
 pub use rtic_monotonic as monotonic;
 
-use core::sync::atomic::{AtomicBool, Ordering};
-use crate::hal::eclic::{EclicExt, Level, Priority};
-use crate::hal::pac::ECLIC;
-use riscv::interrupt::{self, CriticalSection, Nr};
+pub use core::sync::atomic::{AtomicBool, Ordering};
+pub use crate::hal::eclic::{EclicExt, Level, Priority};
+pub use crate::hal::pac::ECLIC;
+pub use riscv::interrupt::{self, CriticalSection, Nr};
 
 pub use crate::hal::pac::Peripherals;
+
+#[cfg(riscv)]
+pub fn nop() { riscv::asm::nop() }
+#[cfg(not(riscv))]
+pub fn nop() { }
+
+#[cfg(riscv)]
+pub fn wfi() { riscv::asm::wfi() }
+#[cfg(not(riscv))]
+pub fn wfi() { }
+
 
 pub type SCFQ<const N: usize> = Queue<u8, N>;
 pub type SCRQ<T, const N: usize> = Queue<(T, u8), N>;
